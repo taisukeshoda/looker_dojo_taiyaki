@@ -47,7 +47,7 @@ view: sales_data {
   }
 
   dimension: sales_date {
-    type: string
+    type: date
     sql: ${TABLE}."Sales_Date" ;;
   }
 
@@ -66,5 +66,11 @@ view: sales_data {
   }
   measure: count {
     type: count
+  }
+  measure: average_sales {
+    type: average
+    label: "平均売上額"
+    value_format: "\"￥\"#,##0"
+    sql: abs(${TABLE}."Sales") ;;
   }
 }

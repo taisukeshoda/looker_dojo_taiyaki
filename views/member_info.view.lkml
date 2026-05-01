@@ -51,16 +51,16 @@ view: member_info {
   measure: member_amount {
     type: sum
     label: "合計会員数"
-    sql: abs(${TABLE}."Number_of_members") ;;
+    sql: abs(${TABLE}."Number_of_Members") ;;
   }
   measure: men_amount {
     type: sum
     label: "男性会員数"
-    sql: case when ${TABLE}."Gender" = "男性" then ${TABLE}."Number_of_members" else 0 END;;
+    sql: case when ${TABLE}."Gender" = '男性' then ${TABLE}."Number_of_Members" else 0 END;;
   }
   measure: women_amount {
     type: sum
     label: "女性会員数"
-    sql: case when ${TABLE}."Gender" = "女性" then ${TABLE}."Number_of_members" else 0 END;;
+    sql: case when ${TABLE}."Gender" = '女性' then ${TABLE}."Number_of_Members" else 0 END;;
   }
 }
