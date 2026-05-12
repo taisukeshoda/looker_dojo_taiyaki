@@ -73,4 +73,9 @@ view: sales_data {
     value_format: "\"￥\"#,##0"
     sql: abs(${TABLE}."Sales") ;;
   }
+  measure: sum_sales {
+    type: sum
+    label: "売上金額"
+    sql: abs(${TABLE}."Sales") ;;
+  }
 }
