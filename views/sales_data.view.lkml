@@ -54,7 +54,7 @@ view: sales_data {
     type: time
     label: "売上日"
     timeframes: [raw, date, week, month, quarter, year]
-    sql: CAST(${TABLE}."Sales_Date" AS DATE) ;;
+    sql: TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/DD');;
   }
 
   dimension: store_id {
