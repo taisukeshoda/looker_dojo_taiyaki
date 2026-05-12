@@ -102,6 +102,7 @@ view: store_master {
   }
 
   dimension: store_id {
+    primary_key: yes
     type: string
     sql: ${TABLE}."Store_ID" ;;
   }

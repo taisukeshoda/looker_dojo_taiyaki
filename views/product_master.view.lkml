@@ -17,6 +17,7 @@ view: product_master {
   }
 
   dimension: product_id {
+    primary_key: yes
     type: number
     sql: ${TABLE}."Product_ID" ;;
   }

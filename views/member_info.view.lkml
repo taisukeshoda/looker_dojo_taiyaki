@@ -22,6 +22,7 @@ view: member_info {
   }
 
   dimension: customer_id {
+    primary_key: yes
     type: number
     sql: ${TABLE}."Customer_ID" ;;
   }
