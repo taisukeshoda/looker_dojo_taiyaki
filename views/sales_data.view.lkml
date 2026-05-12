@@ -48,7 +48,13 @@ view: sales_data {
 
   dimension: sales_date {
     type: date
-    sql: ${TABLE}."Sales_Date" ;;
+    sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/DD') ;;
+  }
+  dimension_group: date {
+    type: time
+    label: "売上日"
+    timeframes: [raw, date, week, month, quarter, year]
+    sql: CAST(${TABLE}."Sales_Date" AS DATE) ;;
   }
 
   dimension: store_id {
