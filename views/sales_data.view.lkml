@@ -50,6 +50,11 @@ view: sales_data {
     type: date
     sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/DD') ;;
   }
+  dimension: sales_month {
+    type: date
+    label: "売上月"
+    sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM') ;;
+  }
   dimension_group: date {
     type: time
     label: "売上日"
