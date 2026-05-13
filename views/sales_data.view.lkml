@@ -13,6 +13,7 @@ view: sales_data {
 
   dimension: cost_of_sales {
     type: string
+    label: "原価"
     sql: ${TABLE}."Cost_of_Sales" ;;
   }
 
@@ -23,6 +24,7 @@ view: sales_data {
 
   dimension: gross_profit {
     type: string
+    label: "売上総利益"
     sql: ${TABLE}."Gross_Profit" ;;
   }
 
@@ -38,11 +40,13 @@ view: sales_data {
 
   dimension: quantity {
     type: string
+    label: "売上量"
     sql: ${TABLE}."Quantity" ;;
   }
 
   dimension: sales {
     type: string
+    label: "売上"
     sql: ${TABLE}."Sales" ;;
   }
 
@@ -50,11 +54,7 @@ view: sales_data {
     type: date
     sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/DD') ;;
   }
-  dimension: sales_month {
-    type: date
-    label: "売上月"
-    sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/01') ;;
-  }
+
   dimension_group: date {
     type: time
     label: "売上日"
@@ -89,4 +89,9 @@ view: sales_data {
     label: "売上金額"
     sql: abs(${TABLE}."Sales") ;;
   }
+  measure: sum_profit {
+    type: sum
+    label: "利益"
+    sql: abs(${TABLE}."Gross_Profit") ;;
+    }
 }
