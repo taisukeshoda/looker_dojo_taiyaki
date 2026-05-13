@@ -53,7 +53,7 @@ view: sales_data {
   dimension: sales_month {
     type: date
     label: "売上月"
-    sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM') ;;
+    sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/01') ;;
   }
   dimension_group: date {
     type: time
