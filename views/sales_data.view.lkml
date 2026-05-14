@@ -23,7 +23,7 @@ view: sales_data {
   }
 
   dimension: gross_profit {
-    type: string
+    type: number
     label: "売上総利益"
     sql: ${TABLE}."Gross_Profit" ;;
   }
