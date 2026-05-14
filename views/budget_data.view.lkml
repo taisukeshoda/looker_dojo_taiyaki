@@ -32,6 +32,7 @@ view: budget_data {
   measure: dudget_amount {
     type: sum
     label: "予算"
+    value_format: "\"￥\"#,##0"
     sql: abs(${TABLE}."Budget_Amount");;
   }
 }
