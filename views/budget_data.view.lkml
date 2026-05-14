@@ -18,7 +18,7 @@ view: budget_data {
 
   dimension: budget_year {
     type: date
-    sql: ${TABLE}."Budget_Year" ;;
+    sql: TO_DATE(${TABLE}."Budget_Year", 'YYYY/MM/DD');;
   }
 
   dimension: store_id {
@@ -28,5 +28,10 @@ view: budget_data {
   }
   measure: count {
     type: count
+  }
+  measure: dudget_amount {
+    type: sum
+    label: "予算"
+    sql: abs(${TABLE}."Budget_Amount");;
   }
 }
