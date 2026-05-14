@@ -85,3 +85,4 @@ explore: sales_data_024 {}
 
 explore: store_master {}
 
+explore: data_summary {}
