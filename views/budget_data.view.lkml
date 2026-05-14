@@ -17,7 +17,7 @@ view: budget_data {
   }
 
   dimension: budget_year {
-    type: string
+    type: date
     sql: ${TABLE}."Budget_Year" ;;
   }
 

@@ -12,13 +12,13 @@ view: product_master {
     # This dimension will be called "Category ID" in Explore.
 
   dimension: category_id {
-    type: number
+    type: string
     sql: ${TABLE}."Category_ID" ;;
   }
 
   dimension: product_id {
     primary_key: yes
-    type: number
+    type: string
     sql: ${TABLE}."Product_ID" ;;
   }
 

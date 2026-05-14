@@ -13,7 +13,7 @@ view: category_master {
 
   dimension: category_id {
     primary_key: yes
-    type: number
+    type: string
     sql: ${TABLE}."category_ID" ;;
   }
 

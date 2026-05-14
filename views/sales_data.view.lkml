@@ -12,7 +12,7 @@ view: sales_data {
     # This dimension will be called "Cost of Sales" in Explore.
 
   dimension: cost_of_sales {
-    type: string
+    type: number
     label: "原価"
     sql: ${TABLE}."Cost_of_Sales" ;;
   }
@@ -34,18 +34,18 @@ view: sales_data {
   }
 
   dimension: product_id {
-    type: number
+    type: string
     sql: ${TABLE}."Product_ID" ;;
   }
 
   dimension: quantity {
-    type: string
+    type: number
     label: "売上量"
     sql: ${TABLE}."Quantity" ;;
   }
 
   dimension: sales {
-    type: string
+    type: number
     label: "売上"
     sql: ${TABLE}."Sales" ;;
   }
