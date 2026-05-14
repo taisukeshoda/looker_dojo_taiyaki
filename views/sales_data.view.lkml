@@ -87,11 +87,13 @@ view: sales_data {
   measure: sum_sales {
     type: sum
     label: "売上金額"
+    value_format: "\"￥\"#,##0"
     sql: abs(${TABLE}."Sales") ;;
   }
   measure: sum_profit {
     type: sum
     label: "利益"
+    value_format: "\"￥\"#,##0"
     sql: abs(${TABLE}."Gross_Profit") ;;
     }
 }
