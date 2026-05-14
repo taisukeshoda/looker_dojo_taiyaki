@@ -69,6 +69,7 @@ view: sales_data {
 
   dimension: voucher_number {
     type: string
+    primary_key: yes
     sql: ${TABLE}."Voucher_Number" ;;
   }
   dimension: sales_comparison {
