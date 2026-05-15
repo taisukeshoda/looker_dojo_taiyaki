@@ -80,10 +80,8 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
           sql_on: ${calender_master.date} = ${sales_data.sales_date} ;;
         }
         join:budget_data  {
-          type: left_outer
+          type:inner
           relationship: one_to_many
           sql_on: ${calender_master.date} = ${budget_data.budget_year} ;;
         }
       }
-
-
