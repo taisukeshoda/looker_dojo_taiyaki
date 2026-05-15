@@ -52,12 +52,13 @@ view: sales_data {
 
   dimension: sales_date {
     type: date
+    label: "売上日"
     sql:TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/DD') ;;
   }
 
   dimension_group: date {
     type: time
-    label: "売上日"
+    label: "売上日_区分"
     timeframes: [raw, date, week, month, quarter, year]
     sql: TO_DATE(${TABLE}."Sales_Date", 'YYYY/MM/DD');;
   }
