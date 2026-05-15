@@ -85,4 +85,10 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
           sql_on: ${calender_master.date} = ${budget_data.budget_year} ;;
         }
       }
-        explore: budget_anual {}
+        explore: budget_anual {
+          join: store_master  {
+            type: left_outer
+            relationship: many_to_one
+            sql_on: ${budget_anual.store_id} = ${store_master.store_id}  ;;
+          }
+        }

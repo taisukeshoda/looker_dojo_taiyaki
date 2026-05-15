@@ -5,7 +5,7 @@ view: budget_anual {
         "Sales_Date" AS data_date,
         "Store_ID"   AS store_id,
         "Sales"      AS amount,
-        'Actual'     AS data_source_type
+        '実績'     AS data_source_type
       FROM "DATA_SETS"."Sales_Data"
 
       UNION ALL
@@ -14,7 +14,7 @@ view: budget_anual {
       "Budget_Year"   AS data_date,
       "Store_ID"      AS store_id,
       "Budget_Amount" AS amount,
-      'Budget'        AS data_source_type
+      '計画'        AS data_source_type
       FROM "DATA_SETS"."Budget_Data" ;;
   }
 
@@ -39,17 +39,39 @@ view: budget_anual {
   dimension: amount {
     type: number
     label: "金額"
+    value_format: "\"￥\"#,##0"
     sql: ${TABLE}.amount;;
     }
   dimension: store_id {
     type: string
     label: "ストアID"
-    sql: ${TABLE}.store_id;;
+    sql: floor(${TABLE}.store_id)::varchar;;
   }
   # 共通の金額メジャー
   measure: total_amount {
     type: sum
     label: "金額合計"
+    value_format: "\"￥\"#,##0"
     sql: ${TABLE}.amount ;;
+  }
+  measure: total_actual_amount {
+    type: sum
+    label: "実績合計"
+    sql: CASE WHEN ${TABLE}.data_source_type = '実績' THEN ${TABLE}.amount ELSE 0 END ;;
+    value_format: "\"￥\"#,##0"
+  }
+
+  measure: total_budget_amount {
+    type: sum
+    label: "計画合計"
+    sql: CASE WHEN ${TABLE}.data_source_type = '計画' THEN ${TABLE}.amount ELSE 0 END ;;
+    value_format: "\"￥\"#,##0"
+  }
+
+  measure: achievement_rate {
+    type: number
+    label: "計画達成率"
+    sql: 1.0 * ${total_actual_amount} / NULLIF(${total_budget_amount}, 0) ;;
+    value_format_name: percent_1
   }
 }
