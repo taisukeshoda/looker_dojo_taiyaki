@@ -28,23 +28,23 @@ view: budget_anual {
   }
   dimension: data_date {
     type: date
-    sql: TO_DATE(${TABLE}."data_date", 'YYYY/MM/DD');;
+    sql: TO_DATE(${TABLE}.data_date, 'YYYY/MM/DD');;
   }
   dimension_group: date {
     type: time
     label: "日付"
     timeframes: [raw, date, week, month, quarter, year]
-    sql: TO_DATE(${TABLE}."data_date", 'YYYY/MM/DD');;
+    sql: TO_DATE(${TABLE}.data_date, 'YYYY/MM/DD');;
   }
   dimension: amount {
     type: number
     label: "金額"
-    sql: ${TABLE}."amount";;
+    sql: ${TABLE}.amount;;
     }
   dimension: store_id {
     type: string
     label: "ストアID"
-    sql: ${TABLE}."store_id";;
+    sql: ${TABLE}.store_id;;
   }
   # 共通の金額メジャー
   measure: total_amount {
