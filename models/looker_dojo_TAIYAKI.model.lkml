@@ -72,3 +72,18 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
           sql_on: ${member_info.customer_id} = ${sales_data.customer_id};;
         }
       }
+      explore: calender_master {
+        extends: [sales_data,budget_data]
+        join:sales_data  {
+          type: left_outer
+          relationship: one_to_many
+          sql_on: ${calender_master.date} = ${sales_data.sales_date} ;;
+        }
+        join:budget_data  {
+          type: left_outer
+          relationship: one_to_many
+          sql_on: ${calender_master.date} = ${budget_data.budget_year} ;;
+        }
+      }
+
+
