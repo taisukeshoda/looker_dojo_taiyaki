@@ -26,16 +26,26 @@ view: budget_anual {
     label: "データ種別（実績/計画）"
     sql: ${TABLE}.data_source_type ;;
   }
-
-  # 共通の日付ディメンション
-  dimension_group: data_date {
-    type: time
-    timeframes: [raw, date, month, year]
-    convert_tz: no
-    datatype: date
-    sql: TO_DATE(${TABLE}."data_date", 'YYYY/MM/DD') ;;
+  dimension: data_date {
+    type: date
+    sql: TO_DATE(${TABLE}."data_date", 'YYYY/MM/DD');;
   }
-
+  dimension_group: date {
+    type: time
+    label: "日付"
+    timeframes: [raw, date, week, month, quarter, year]
+    sql: TO_DATE(${TABLE}."data_date", 'YYYY/MM/DD');;
+  }
+  dimension: amount {
+    type: number
+    label: "金額"
+    sql: ${TABLE}."amount";;
+    }
+  dimension: store_id {
+    type: string
+    label: "ストアID"
+    sql: ${TABLE}."store_id";;
+  }
   # 共通の金額メジャー
   measure: total_amount {
     type: sum
