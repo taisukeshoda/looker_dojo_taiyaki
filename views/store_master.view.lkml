@@ -151,4 +151,9 @@ view: store_master {
     type: count
     drill_fields: [store_name]
   }
+  measure: store_amount {
+    type: count_distinct
+    label: "店舗数"
+    sql: ${TABLE}.store_id ;;
+  }
 }
