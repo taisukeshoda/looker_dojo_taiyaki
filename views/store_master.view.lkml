@@ -136,7 +136,11 @@ view: store_master {
     type: number
     sql: ${TABLE}."Video_Store" ;;
   }
-
+  dimension: customer_location{
+    type: location
+    sql_latitude: ${TABLE}."Latitude";;
+    sql_longitude: ${TABLE}."Longitude" ;;
+  }
   dimension: zip_code_store {
     type: number
     sql: ${TABLE}."Zip_Code_Store" ;;
