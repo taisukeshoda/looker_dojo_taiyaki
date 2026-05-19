@@ -156,4 +156,5 @@ view: store_master {
     label: "店舗数"
     sql: ${TABLE}."Store_ID" ;;
   }
+
 }
